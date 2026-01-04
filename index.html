@@ -59,7 +59,6 @@
             top: 0;
             z-index: 1000;
             padding: 15px 0;
-            transition: var(--transition);
         }
         
         .header-content {
@@ -74,19 +73,9 @@
             max-width: 300px;
         }
         
-        .logo-img {
+        .logo img {
             height: 60px;
             width: auto;
-            background-color: var(--gold-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: white;
         }
         
         .logo-text {
@@ -146,10 +135,9 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(26, 15, 15, 0.85), rgba(26, 15, 15, 0.8)), url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(rgba(26, 15, 15, 0.7), rgba(26, 15, 15, 0.7)), url('./assets/wine.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
             text-align: center;
@@ -160,7 +148,6 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
         }
         
         .hero h2 {
@@ -307,7 +294,6 @@
             transform: translateY(20px);
             opacity: 0;
             transition: var(--transition);
-            cursor: pointer;
         }
         
         .gallery-item.visible {
@@ -340,6 +326,7 @@
             height: 100%;
             background: rgba(184, 31, 64, 0.1);
             z-index: 1;
+            animation: glow 2s infinite alternate;
         }
         
         .gallery-item:nth-child(2n) {
@@ -348,92 +335,6 @@
         
         .gallery-item:nth-child(3n) {
             grid-row: span 2;
-        }
-        
-        /* Wine Modal */
-        .wine-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: white;
-            max-width: 800px;
-            width: 90%;
-            border-radius: 10px;
-            overflow: hidden;
-            animation: modalFadeIn 0.5s ease;
-        }
-        
-        .modal-header {
-            padding: 20px;
-            background-color: var(--dark-color);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-header h3 {
-            color: white;
-            margin: 0;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .modal-body {
-            padding: 30px;
-            display: flex;
-            gap: 30px;
-        }
-        
-        .modal-image {
-            flex: 1;
-        }
-        
-        .modal-image img {
-            width: 100%;
-            border-radius: 5px;
-        }
-        
-        .modal-info {
-            flex: 2;
-        }
-        
-        .wine-name {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-        
-        .wine-description {
-            margin-bottom: 20px;
-        }
-        
-        .wine-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .detail-item {
-            padding: 10px;
-            background-color: #f9f5f0;
-            border-radius: 5px;
         }
         
         /* Contact Section */
@@ -526,10 +427,9 @@
             max-width: 200px;
         }
         
-        .footer-logo .logo-img {
-            height: 50px;
-            width: 50px;
-            font-size: 1.2rem;
+        .footer-logo img {
+            height: 60px;
+            width: auto;
             margin-bottom: 15px;
         }
         
@@ -611,14 +511,12 @@
             }
         }
         
-        @keyframes modalFadeIn {
+        @keyframes glow {
             from {
-                opacity: 0;
-                transform: translateY(-50px);
+                box-shadow: 0 0 10px rgba(255, 77, 126, 0.5);
             }
             to {
-                opacity: 1;
-                transform: translateY(0);
+                box-shadow: 0 0 20px rgba(255, 77, 126, 0.8), 0 0 30px rgba(255, 77, 126, 0.6);
             }
         }
         
@@ -644,10 +542,6 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
-            
-            .modal-body {
-                flex-direction: column;
-            }
         }
         
         @media (max-width: 768px) {
@@ -661,8 +555,6 @@
             
             nav ul {
                 margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
             }
             
             nav ul li {
@@ -697,16 +589,17 @@
         }
         
         @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
             .hero {
                 margin-top: 140px;
             }
             
             .contact-form {
                 padding: 20px;
-            }
-            
-            .wine-details {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -716,11 +609,7 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <div class="logo-img">IW</div>
-                <div class="logo-text">
-                    <h1>INFINITI WINES</h1>
-                    <p>Premium South African Wines</p>
-                </div>
+                <img src="assets/logo.jpg" alt="Infiniti Wines Logo">
             </div>
             <nav>
                 <ul>
@@ -750,7 +639,7 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="INFINITI WINES Vineyard">
+                    <img src="assets/wine5.jpg" alt="INFINITI WINES Vineyard">
                 </div>
                 <div class="about-text">
                     <h3>Crafting Excellence Since 1995</h3>
@@ -769,59 +658,24 @@
                 <h2>Our Collection</h2>
             </div>
             <div class="gallery-container">
-                <div class="gallery-item" data-wine="Pinot Noir Rosé">
-                    <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Pinot Noir Rosé">
+                <div class="gallery-item">
+                    <img src="assets/wine3.jpg" alt="Penot Noir Rose">
                 </div>
-                <div class="gallery-item" data-wine="House White Wine">
-                    <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="House White Wine">
+                <div class="gallery-item">
+                    <img src="assets/housewhitewine.jpg" alt="House White Wine">
                 </div>
-                <div class="gallery-item" data-wine="Chocolate Merlot">
-                    <img src="https://images.unsplash.com/photo-1599594210696-6c6d8d8c8c8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Chocolate Merlot">
+                <div class="gallery-item">
+                    <img src="assets/chocolate.jpg" alt="chocolate merlot">
                 </div>
-                <div class="gallery-item" data-wine="Chardonnay">
-                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Chardonnay">
+                <div class="gallery-item">
+                    <img src="assets/chardonnay.jpg" alt="chardonnay">
                 </div>
-                <div class="gallery-item" data-wine="Cellar">
-                    <img src="https://images.unsplash.com/photo-1566633808646-9c0e077d3d6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Cellar">
+                <div class="gallery-item">
+                    <img src="assets/celler.jpg" alt="cellar">
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Wine Details Modal -->
-    <div class="wine-modal" id="wineModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalWineName">Wine Name</h3>
-                <button class="close-modal" id="closeModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img id="modalWineImage" src="" alt="Wine Image">
-                </div>
-                <div class="modal-info">
-                    <h4 class="wine-name" id="modalWineTitle">Pinot Noir Rosé 2022</h4>
-                    <p class="wine-description" id="modalWineDescription">A delicate and refreshing rosé with notes of strawberry, citrus, and rose petals. Perfect for summer afternoons and light meals.</p>
-                    <div class="wine-details">
-                        <div class="detail-item">
-                            <strong>Region:</strong> <span id="modalWineRegion">Stellenbosch</span>
-                        </div>
-                        <div class="detail-item">
-                            <strong>Alcohol:</strong> <span id="modalWineAlcohol">13.5%</span>
-                        </div>
-                        <div class="detail-item">
-                            <strong>Type:</strong> <span id="modalWineType">Rosé</span>
-                        </div>
-                        <div class="detail-item">
-                            <strong>Price:</strong> <span id="modalWinePrice">R185</span>
-                        </div>
-                    </div>
-                    <p id="modalWinePairing"><strong>Pairs well with:</strong> Light salads, seafood, and soft cheeses.</p>
-                    <button class="btn" id="orderThisWineBtn">Order This Wine</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Contact Section -->
     <section class="section" id="contact">
@@ -866,13 +720,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Updated with white background and quick links -->
     <footer>
         <div class="container">
             <div class="footer-main">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <div class="logo-img">IW</div>
+                        <img src="assets/logo.jpg" alt="Infiniti Wines Logo">
                         <p>Premium South African wines crafted with passion and expertise. Experience the taste of exceptional terroir.</p>
                     </div>
                 </div>
@@ -929,116 +783,21 @@
             });
         }, observerOptions);
 
-        // Wine data for modal
-        const wineData = {
-            "Pinot Noir Rosé": {
-                name: "INFINITI Pinot Noir Rosé ",
-                description: "A delicate and refreshing rosé with notes of strawberry, citrus, and rose petals. Perfect for summer afternoons and light meals.",
-                region: "Stellenbosch",
-                alcohol: "13.5%",
-                type: "Rosé",
-                price: "R185",
-                pairing: "Light salads, seafood, and soft cheeses."
-            },
-            "House White Wine": {
-                name: "INFINITI House White Blend ",
-                description: "A carefully crafted blend of Chenin Blanc and Sauvignon Blanc, offering crisp acidity with tropical fruit notes and a smooth finish.",
-                region: "Franschhoek",
-                alcohol: "12.8%",
-                type: "White Blend",
-                price: "R165",
-                pairing: "Seafood, chicken dishes, and light pasta."
-            },
-            "Chocolate Merlot": {
-                name: "INFINITI Chocolate Merlot 2019",
-                description: "A rich and velvety Merlot with dark chocolate undertones, ripe plum flavors, and a smooth, lingering finish.",
-                region: "Stellenbosch",
-                alcohol: "14.2%",
-                type: "Red Wine",
-                price: "R245",
-                pairing: "Red meats, dark chocolate desserts, and hard cheeses."
-            },
-            "Chardonnay": {
-                name: "INFINITI Barrel-Aged Chardonnay ",
-                description: "A full-bodied Chardonnay with vanilla and oak notes from barrel aging, balanced by crisp apple and citrus flavors.",
-                region: "Elgin Valley",
-                alcohol: "13.8%",
-                type: "White Wine",
-                price: "R225",
-                pairing: "Roasted chicken, creamy pasta, and grilled seafood."
-            },
-            "Cellar": {
-                name: "INFINITI Wine Cellar Collection",
-                description: "Explore our exclusive cellar collection featuring limited edition wines and vintage reserves from our finest vineyards.",
-                region: "Multiple Regions",
-                alcohol: "Varies",
-                type: "Various",
-                price: "From R350",
-                pairing: "Contact us for personalized pairing recommendations."
-            }
-        };
-
-        // DOM Elements
-        const wineModal = document.getElementById('wineModal');
-        const closeModalBtn = document.getElementById('closeModal');
-        const modalWineName = document.getElementById('modalWineName');
-        const modalWineTitle = document.getElementById('modalWineTitle');
-        const modalWineImage = document.getElementById('modalWineImage');
-        const modalWineDescription = document.getElementById('modalWineDescription');
-        const modalWineRegion = document.getElementById('modalWineRegion');
-        const modalWineAlcohol = document.getElementById('modalWineAlcohol');
-        const modalWineType = document.getElementById('modalWineType');
-        const modalWinePrice = document.getElementById('modalWinePrice');
-        const modalWinePairing = document.getElementById('modalWinePairing');
-        const orderThisWineBtn = document.getElementById('orderThisWineBtn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const orderForm = document.getElementById('orderForm');
-        const wineSelect = document.getElementById('wine');
-
-        // Initialize
+        // Observe elements for animation
         document.addEventListener('DOMContentLoaded', function() {
-            // Observe elements for animation
             const aboutImg = document.querySelector('.about-img');
             const aboutText = document.querySelector('.about-text');
+            const galleryItems = document.querySelectorAll('.gallery-item');
             
             if (aboutImg) observer.observe(aboutImg);
             if (aboutText) observer.observe(aboutText);
             
             galleryItems.forEach(item => {
                 observer.observe(item);
-                
-                // Add click event to gallery items
-                item.addEventListener('click', function() {
-                    const wineName = this.getAttribute('data-wine');
-                    const wineImgSrc = this.querySelector('img').getAttribute('src');
-                    openWineModal(wineName, wineImgSrc);
-                });
-            });
-
-            // Modal functionality
-            closeModalBtn.addEventListener('click', closeWineModal);
-            
-            // Close modal when clicking outside
-            wineModal.addEventListener('click', function(e) {
-                if (e.target === wineModal) {
-                    closeWineModal();
-                }
-            });
-            
-            // Order this wine button
-            orderThisWineBtn.addEventListener('click', function() {
-                const wineName = modalWineTitle.textContent;
-                wineSelect.value = wineName;
-                closeWineModal();
-                
-                // Scroll to contact form
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                
-                // Focus on first form field
-                document.getElementById('name').focus();
             });
 
             // Form submission for WhatsApp ordering
+            const orderForm = document.getElementById('orderForm');
             if (orderForm) {
                 orderForm.addEventListener('submit', function(e) {
                     e.preventDefault();
@@ -1054,9 +813,6 @@
                     
                     // Open WhatsApp with pre-filled message
                     window.open(`https://wa.me/27123456789?text=${message}`, '_blank');
-                    
-                    // Show success message
-                    alert('Thank you for your order! You will now be redirected to WhatsApp to complete your order.');
                     
                     // Reset form
                     orderForm.reset();
@@ -1081,36 +837,6 @@
             });
         });
 
-        // Function to open wine modal
-        function openWineModal(wineName, wineImgSrc) {
-            const wine = wineData[wineName];
-            
-            if (wine) {
-                modalWineName.textContent = wineName;
-                modalWineTitle.textContent = wine.name;
-                modalWineImage.src = wineImgSrc;
-                modalWineImage.alt = wineName;
-                modalWineDescription.textContent = wine.description;
-                modalWineRegion.textContent = wine.region;
-                modalWineAlcohol.textContent = wine.alcohol;
-                modalWineType.textContent = wine.type;
-                modalWinePrice.textContent = wine.price;
-                modalWinePairing.innerHTML = `<strong>Pairs well with:</strong> ${wine.pairing}`;
-                
-                // Set data attribute for ordering this specific wine
-                orderThisWineBtn.setAttribute('data-wine', wine.name);
-            }
-            
-            wineModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Function to close wine modal
-        function closeWineModal() {
-            wineModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
         // Add scroll effect to header
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
@@ -1120,13 +846,6 @@
             } else {
                 header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                 header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Add keyboard support for modal
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && wineModal.style.display === 'flex') {
-                closeWineModal();
             }
         });
     </script>
